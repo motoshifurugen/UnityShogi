@@ -80,6 +80,10 @@ public class CanvasScript : MonoBehaviour
             // 選択状態でなければ、移動可能マスを取得する
             int i = 0;
             foreach (KomaMove move in moves) {
+                // // はみ出す移動可能マスの修正
+                // if (((sc.x + move.x) > 9 || (sc.x + move.x) < 1) || ((sc.y + move.y) > 9 || (sc.y + move.y) < 1)) {
+                //     continue;
+                // }
                 Sprite sp = Resources.Load<Sprite>("Texture/koma_able"); // 移動可能マスに貼り付ける画像を取得
                 GameObject gameObj = new GameObject();
                 SpriteRenderer spriteRenderer = gameObj.AddComponent<SpriteRenderer>();
@@ -87,7 +91,6 @@ public class CanvasScript : MonoBehaviour
                 gameObj.transform.parent = FindObjectOfType<Canvas>().transform;
                 gameObj.transform.localScale = new Vector3(0.50f, 0.50f, 0); // 大きさを調整する
                 gameObj.transform.name = "koma_able" + i;
-                Debug.Log(gameObj.transform.name);
                 gameObj.transform.position = new Vector3(basex - per1x * (sc.x + move.x), basey - per1y * (sc.y + move.y), 20);
                 i++;
             }

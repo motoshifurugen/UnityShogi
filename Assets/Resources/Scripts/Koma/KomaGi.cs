@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KomaKi : KomaBase
+public class KomaGi : KomaBase
 {
-    // 金将の移動可能マスリスト
+    // 銀将の移動可能マスリスト
     public List<KomaMove> GetMoves(bool reverse = false) {
 
         // 相手の場合は、逆にする
@@ -14,16 +14,16 @@ public class KomaKi : KomaBase
         }
 
         List<KomaMove> moves = new List<KomaMove>();
-        // 下
-        KomaMove move2 = new KomaMove();
-        move2.x = 0;
-        move2.y = 1 * reversenum;
-        moves.Add(move2);
-        // 左
-        KomaMove move4 = new KomaMove();
-        move4.x = -1;
-        move4.y = 0;
-        moves.Add(move4);
+        // 右下
+        KomaMove move = new KomaMove();
+        move.x = 1;
+        move.y = 1 * reversenum;
+        moves.Add(move);
+        // 左下
+        KomaMove move3 = new KomaMove();
+        move3.x = -1;
+        move3.y = 1 * reversenum;
+        moves.Add(move3);
         // 左上
         KomaMove move5 = new KomaMove();
         move5.x = -1;
@@ -39,11 +39,6 @@ public class KomaKi : KomaBase
         move7.x = 1;
         move7.y = -1 * reversenum;
         moves.Add(move7);
-        // 右
-        KomaMove move8 = new KomaMove();
-        move8.x = 1;
-        move8.y = 0;
-        moves.Add(move8);
 
         return moves;
     }
